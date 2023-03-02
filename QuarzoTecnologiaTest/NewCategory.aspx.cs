@@ -19,11 +19,16 @@ namespace QuarzoTecnologiaTest
         {
             try
             {
-                if (txtName.Text != "")
+                if (txtName.Text != "" && txtId.Text != "")
                 {
                     _categoryRepository.CreateCategory(txtId.Text, txtName.Text, cbxActive.Checked);
                     Message.ForeColor = System.Drawing.Color.Green;
                     Message.Text = "The category was created correctly";
+                }
+                else
+                {
+                    Message.ForeColor = System.Drawing.Color.Red;
+                    Message.Text = "You must place a name and id";
                 }
             }
             catch (Exception ex)

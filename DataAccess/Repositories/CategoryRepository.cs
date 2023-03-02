@@ -90,5 +90,25 @@ namespace DataAccess.Repositories
                 _dbConnection.Disconnect();
             }
         }
+
+        public void DeleteCategory(int categoryId)
+        {
+            _dbConnection.Connect();
+            try
+            {
+                var command = new SqlCommand("Usp_Del_Co_Categoria", _dbConnection.connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@pCategoryId", categoryId));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                _dbConnection.Disconnect();
+            }
+        }
     }
 }

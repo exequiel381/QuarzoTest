@@ -18,6 +18,7 @@
 
             <asp:Button class="btn btn-primary" ID="UpdateButton" runat="server" Text="Update" OnClick="UpdateCategory" />
             <asp:Button class="btn btn-success" ID="Button1" runat="server" Text="Create new" OnClick="goToNewCategory" />
+            <asp:Button class="btn btn-danger" ID="Button2" runat="server" Text="Delete" OnClick="DeleteCategory" />
             <asp:Label ID="Message" runat="server" Text=""></asp:Label>
         </div>
 </asp:Content>

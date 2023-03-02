@@ -45,11 +45,16 @@ namespace QuarzoTecnologiaTest
         {
             try
             {
-                if (txtName.Text != "")
+                if (txtName.Text != "" && txtId.Text != "")
                 {
                     _categoryRepository.UpdateCategory(txtId.Text, txtName.Text, cbxActive.Checked);
                     Message.ForeColor = System.Drawing.Color.Green;
                     Message.Text = "The category was updated correctly";
+                }
+                else
+                {
+                    Message.ForeColor = System.Drawing.Color.Red;
+                    Message.Text = "You must select a category and place a name";
                 }
             }
             catch (Exception ex)
@@ -64,6 +69,31 @@ namespace QuarzoTecnologiaTest
             Response.Redirect("NewCategory.aspx");
         }
 
-
+        public void DeleteCategory(object sender, EventArgs e)
+        {
+            try
+            {
+                int categoryId;
+                if (int.TryParse(DropCategories.SelectedValue, out categoryId))
+                {
+                    _categoryRepository.DeleteCategory(categoryId);
+                    Message.ForeColor = System.Drawing.Color.Green;
+                    Message.Text = "The category was deleted correctly";
+                }
+                else
+                {
+                    txtId.Text = "";
+                    txtName.Text = "";
+                    cbxActive.Checked = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Message.ForeColor = System.Drawing.Color.Red;
+                Message.Text = "There was a problem deleting the category";
+            }
+        }
     }
+
+
 }
