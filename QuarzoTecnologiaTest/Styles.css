@@ -1,0 +1,15 @@
+﻿.container_page {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-row-gap: 5px;
+    width : 280px;
+
+}
+
+.Container_CheckBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
